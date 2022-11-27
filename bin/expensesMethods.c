@@ -18,7 +18,7 @@ double mealCosts[numberOfDays][3]              ---               (record each me
 // 4 primary methods
 
 // double calculateTotalExpenses( ... takes in all user input ... ) { returns total amount of expenses for the businessperson }
-double calculateTotalExpenses(double airfare, double carRentalCost, int milesDriven, double parkingFees[], double taxiFees[], double registrationFees, double hotelCost, double a_mealCosts[][3])
+double calculateTotalExpenses(int numberOfDays, double airfare, double carRentalCost, int milesDriven, double parkingFees[], double taxiFees[], double registrationFees, double hotelCost, double a_mealCosts[][3])
 {
     double totalCost = 0;
 
@@ -26,23 +26,14 @@ double calculateTotalExpenses(double airfare, double carRentalCost, int milesDri
     double parkingCosts = 0;
     double taxiCosts = 0;
     double mealCosts = 0;
-    int sizeP = sizeof(parkingFees)/sizeof(parkingFees[0]);
-    int sizeT = sizeof(taxiFees)/sizeof(taxiFees[0]);
-    int sizeM = sizeof(sizeM)/sizeof(taxiFees[0]);
 
-    for (int i = 0; i < sizeP; i++)
+    for (int i = 0; i < numberOfDays; i++)
     {
-        /* code */
         parkingCosts += parkingFees[i];
-    }
-
-    for (int i = 0; i < sizeT; i++)
-    {
-        /* code */
         taxiCosts += taxiFees[i];
     }
 
-    for (int i = 0; i < sizeM; i++)
+    for (int i = 0; i < numberOfDays; i++)
     {
         for (int k = 0; k < 3; i++)
         {
@@ -69,13 +60,75 @@ double calculateTotalExpenses(double airfare, double carRentalCost, int milesDri
 * $90 lodging per night
 * breakfast, lunch, dinner ...
 */
-double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTime, int milesDriven)
+double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTime, double parkingFees[], double taxiFees[])
 {
-    return 0.0;
+    double totalAllowed = 0;
+
+    const double allowableParkingExpense = 6.0;
+    const double allowableTaxiExpense = 10.0;
+    double parkingCosts = 0;
+    double taxiCosts = 0;
+
+    for (int i = 0; i < numberOfDays; i++)
+    {
+        if(parkingFees[i] > 0)
+        {
+            parkingCosts += allowableParkingExpense;
+        }
+        
+        if(taxiFees[i] > 0)
+        {
+            parkingCosts += allowableTaxiExpense;
+        }
+    }
+
+    double hotelCosts = 90 * numberOfDays;
+
+    const double breakfastCost = 9.0;
+    const double lunchCost = 12.0;
+    const double dinnerCost = 16.0;
+    const double costOfMealsPerDay = breakfastCost + lunchCost + dinnerCost;
+    double mealCosts = costOfMealsPerDay * (numberOfDays - 2); // excluding first and last day
+
+    // First day meals
+    if(departTime < 7)
+    {
+        mealCosts += breakfastCost + lunchCost + dinnerCost;
+    }
+    else if(departTime < 12)
+    {
+        mealCosts += lunchCost + dinnerCost;
+    }
+    else if(departTime < 18)
+    {
+        mealCosts += dinnerCost;
+    } 
+
+    // Last day meals
+    if(departTime > 19) 
+    {
+        mealCosts += breakfastCost + lunchCost + dinnerCost;
+    }
+    else if(departTime > 12)
+    {
+        mealCosts += breakfastCost + lunchCost;
+    }
+    else if(departTime > 8)
+    {
+        mealCosts += breakfastCost;
+    }
+
+
+    totalAllowed +=   
+        parkingCosts + 
+        taxiCosts + 
+        hotelCosts + 
+        mealCosts;
+
+    return totalAllowed;
 }
 
 // double calculateReimburseAmount() ~ returns total - allowable
-// double calculateSavedAmount() ~ returns allowable - total
 double calculateReimburseAmount(double total, double allowable)
 {
     return (total - allowable); 
