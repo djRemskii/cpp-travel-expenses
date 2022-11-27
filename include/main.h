@@ -7,27 +7,27 @@
  */
 
 //Variables to get input for
-int numberOfDays;
-int departTime;
-int returnTime;
-double airfare;
-double carRentalCost;
-int milesDriven;
-double parkingFees[];
-double taxiFees[];
-double registrationFees;
-double hotelCost;
-double mealCosts[][3];
+extern int numberOfDays;
+extern int departTime;
+extern int returnTime;
+extern double airfare;
+extern double carRentalCost;
+extern int milesDriven;
+extern double parkingFees[];
+extern double taxiFees[];
+extern double registrationFees;
+extern double hotelCost;
+extern double mealCosts[][3];
 
 //Variables to be calculated and output
-double totalExpenses;
-double totalAllowable;
-double reimburseAmount;
-double savedAmount;
+extern double totalExpenses;
+extern double totalAllowable;
+extern double reimburseAmount;
+extern double savedAmount;
 
 //Calculation methods
-void calculateTotalExpenses();
-void calculateTotalAllowable();
-void calculateReimburseAmount();
-void calculateSavedAmount();
+extern void calculateTotalExpenses();
+extern void calculateTotalAllowable();
+extern void calculateReimburseAmount();
+extern void calculateSavedAmount();
 
