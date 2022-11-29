@@ -5,7 +5,7 @@
  * file to hold all the variables and methods that will be used by the program.
  */
 
-#include "main.h"
+#include "../include/main.h"
 
 int numberOfDays;
 int departTime;
@@ -24,7 +24,7 @@ double totalAllowable;
 double reimburseAmount;
 double savedAmount;
 
-void main(void){
+int main(){
     //Print introduction to program to terminal
     printIntro();
 
@@ -32,7 +32,7 @@ void main(void){
     //Prompt for user input to assign values to each variable
     getUserInputs();
 
-
+    /*
     //After all variables have values, calculate 
     totalExpenses = calculateTotalExpenses(numberOfDays, airfare, carRentalCost, milesDriven, parkingFees, taxiFees, registrationFees, hotelCost, mealCosts);
     totalAllowable = calculateTotalAllowable(numberOfDays, departTime, returnTime, parkingFees, taxiFees);
@@ -45,4 +45,6 @@ void main(void){
     outputTotalALlowable();
     outputReimburseAmount();
     outputSavedAmount();
+    */
+
 }

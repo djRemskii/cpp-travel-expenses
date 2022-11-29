@@ -1,18 +1,29 @@
 #include <stdio.h>
-int main(){
+#include "../include/main.h"
+
+void printIntro(){
+    printf("Travel Expenses Simulation created by:\n");
+    printf("\tNicolas Amancio\n");
+    printf("\tRemi Ong\n");
+    printf("\tToby Thap\n");
+    printf("\tMinh Tran\n");
+    printf("\tMatthew Yu\n\n");
+}
+
+int getUserInputs(){
     int numberOfDays;
-    printf("How many days are you staying?\n");
+    printf("How many days did you stay?\n");
     scanf("%d", &numberOfDays);
     while (numberOfDays < 1){
         printf("Invalid, try again\n");
         scanf("%d", &numberOfDays);
     }
     int departTime;
-    printf("What is the departure time (in hours)?\n");
+    printf("What is the departure time (24 hour time, give hour)?\n");
     scanf("%d", &departTime);
     departTime = departTime % 12;
     int returnTime;
-    printf("What is the return time (in hours)?\n");
+    printf("What is the return time (24 hour time, give hour)?\n");
     scanf("%d", &returnTime);
     returnTime = returnTime % 12;
     double airfare;
@@ -80,7 +91,7 @@ int main(){
             int num;
             scanf("%d", &num);
             while (num < 0){
-                printf("Invalid, try again");
+                printf("Invalid, try again\n");
                 scanf("%d", &num);
             }
             mealCosts[i][j] = num;
