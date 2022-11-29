@@ -76,12 +76,12 @@ int main(){
     for (int i = 0; i < numberOfDays; i++){
         char arr[3][10] = {"Breakfast", "Lunch", "Dinner"};
         for (int j = 0; j < 3; j++){
+            printf("Pick meal cost for %s for day %d\n", arr[j], i + 1);
             int num;
-            printf("Pick meal cost for %s\n", arr[j]);
-            scanf("%d", num);
+            scanf("%d", &num);
             while (num < 0){
-                printf("Invalid, try again\n");
-                scanf("%d", num);
+                printf("Invalid, try again");
+                scanf("%d", &num);
             }
             mealCosts[i][j] = num;
         }
