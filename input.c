@@ -40,23 +40,23 @@ int main(){
     for (int i = 0; i < numberOfDays; i++){
         int num;
         printf("What is the parking fee for day %d\n", i + 1);
-        scanf("%d", &num);
+        scanf("%d", &parkingFees[i]);
         while (num < 0){
             printf("Invalid, try again\n");
-            scanf("%d", &num);
+            scanf("%d", &parkingFees[i]);
         }
-        parkingFees[i] = num;
+        
     }
     double taxiFees[numberOfDays];
     for (int i = 0; i < numberOfDays; i++){
         int num;
         printf("What is the taxi fee for day %d\n", i + 1);
-        scanf("%d", &num);
+        scanf("%d", &taxiFees[i]);
         while (num < 0){
             printf("Invalid, try again\n");
-            scanf("%d", &num);
+            scanf("%d", &taxiFees[i]);
         }
-        taxiFees[i] = num;
+        
     }
     double registrationFees;
     printf("What is the registration Fee?\n");
@@ -78,12 +78,11 @@ int main(){
         for (int j = 0; j < 3; j++){
             printf("Pick meal cost for %s for day %d\n", arr[j], i + 1);
             int num;
-            scanf("%d", &num);
+            scanf("%d", &mealCosts[i][j]);
             while (num < 0){
                 printf("Invalid, try again");
-                scanf("%d", &num);
+                scanf("%d", &mealCosts[i][j]);
             }
-            mealCosts[i][j] = num;
         }
     }
     return 0;
