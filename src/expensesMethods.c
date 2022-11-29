@@ -1,4 +1,6 @@
 #include <stdlib.h> // Used for EXIT_FAILURE
+#include <stdio.h>
+#include "../include/main.h"
 
 /*
 User input used in functions... :
@@ -106,7 +108,7 @@ double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTi
     const double breakfastCost = 9.0;
     const double lunchCost = 12.0;
     const double dinnerCost = 16.0;
-    double mealCosts = 0;
+    double mealCosts = 0.0;
     
     for (int day = 0; day < numberOfDays; day++)
     {
@@ -120,11 +122,11 @@ double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTi
                 }
                 else if (mealType = lunch)
                 {
-                    mealCosts += addMealFee(day, numberOfDays, breakfastCost, departTime, returnTime, 12, 12);
+                    mealCosts += addMealFee(day, numberOfDays, lunchCost, departTime, returnTime, 12, 12);
                 }
                 else if (mealType = dinner)
                 {
-                    mealCosts += mealCosts += addMealFee(day, numberOfDays, breakfastCost, departTime, returnTime, 18, 19);
+                    mealCosts += addMealFee(day, numberOfDays, dinnerCost, departTime, returnTime, 18, 19);
                 }
                 else
                 {
@@ -169,7 +171,7 @@ static double addMealFee(int day, int numberOfDays, double constMealCost, int de
         // First day dinner (Dinner Allowed only if arriving before 6 PM)
         if(departTime >= departTimeDeadline)
         {
-            return 0;
+            return 0.0;
         }
 
     }
@@ -180,7 +182,7 @@ static double addMealFee(int day, int numberOfDays, double constMealCost, int de
         // Last day lunch (Lunch allowed only if leaving after 7 PM)
         if(returnTime <= returnTimeDeadline)
         {
-            return 0;
+            return 0.0;
         }
     }
 
