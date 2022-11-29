@@ -1,5 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "../include/main.h"
+
+int numberOfDays;
+int departTime;
+int returnTime;
+double airfare;
+double carRentalCost;
+int milesDriven;
+double* parkingFees;
+double* taxiFees;
+double registrationFees;
+double hotelCost;
+double* mealCosts[];
 
 void printIntro(){
     printf("Travel Expenses Simulation created by:\n");
@@ -11,43 +24,52 @@ void printIntro(){
 }
 
 int getUserInputs(){
-    int numberOfDays;
+    //int numberOfDays;
     printf("How many days did you stay?\n");
     scanf("%d", &numberOfDays);
     while (numberOfDays < 1){
         printf("Invalid, try again\n");
         scanf("%d", &numberOfDays);
     }
-    int departTime;
+
+    double* tempMealCosts[numberOfDays];
+
+    double* tempParkingFees = malloc(numberOfDays * sizeof(double));
+    double* tempTaxiFees = malloc(numberOfDays * sizeof(double));
+    for (int i=0; i<numberOfDays; i++){
+        tempMealCosts[i] = (double*)malloc(3 * sizeof(double));
+    }
+
+    //int departTime;
     printf("What is the departure time (24 hour time, give hour)?\n");
     scanf("%d", &departTime);
     departTime = departTime % 12;
-    int returnTime;
+    //int returnTime;
     printf("What is the return time (24 hour time, give hour)?\n");
     scanf("%d", &returnTime);
     returnTime = returnTime % 12;
-    double airfare;
+    //double airfare;
     printf("What is the air fare?\n");
     scanf("%d", &airfare);
     while (airfare < 0){
         printf("Invalid, try again\n");
         scanf("%d", &airfare);
     }
-    double carRentalCost;
+    //double carRentalCost;
     printf("What is the car rental cost?\n");
     scanf("%d", &carRentalCost);
     while (carRentalCost < 0){
         printf("Invalid, try again\n");
         scanf("%d", &carRentalCost);
     }
-    int milesDriven;
+    //int milesDriven;
     printf("How many miles driven?\n");
     scanf("%d", &milesDriven);
     while (milesDriven < 0){
         printf("Invalid, try again\n");
         scanf("%d", &milesDriven);
     }
-    double parkingFees[numberOfDays];
+    //double parkingFees[numberOfDays];
     for (int i = 0; i < numberOfDays; i++){
         int num;
         printf("What is the parking fee for day %d\n", i + 1);
@@ -58,7 +80,7 @@ int getUserInputs(){
         }
         parkingFees[i] = num;
     }
-    double taxiFees[numberOfDays];
+    //double taxiFees[numberOfDays];
     for (int i = 0; i < numberOfDays; i++){
         int num;
         printf("What is the taxi fee for day %d\n", i + 1);
@@ -69,21 +91,21 @@ int getUserInputs(){
         }
         taxiFees[i] = num;
     }
-    double registrationFees;
+    //double registrationFees;
     printf("What is the registration Fee?\n");
     scanf("%d", &registrationFees);
     while (registrationFees < 0){
         printf("Invalid, try again\n");
         scanf("%d", &registrationFees);
     }
-    double hotelCost;
+    //double hotelCost;
     printf("What is the hotel cost?\n");
     scanf("%d", &hotelCost);
     while (hotelCost < 0){
         printf("Invalid, try again\n");
         scanf("%d", &hotelCost);
     }
-    double mealCosts[numberOfDays][3];
+    //double mealCosts[numberOfDays][3];
     for (int i = 0; i < numberOfDays; i++){
         char arr[3][10] = {"Breakfast", "Lunch", "Dinner"};
         for (int j = 0; j < 3; j++){
