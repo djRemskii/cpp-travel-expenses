@@ -26,8 +26,8 @@ extern double reimburseAmount;
 extern double savedAmount;
 
 //Calculation methods
-extern void calculateTotalExpenses();
-extern void calculateTotalAllowable();
-extern void calculateReimburseAmount();
-extern void calculateSavedAmount();
+extern double calculateTotalExpenses();
+extern double calculateTotalAllowable();
+extern double calculateReimburseAmount();
+extern double calculateSavedAmount();
 

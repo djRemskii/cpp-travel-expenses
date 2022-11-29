@@ -19,15 +19,30 @@ double registrationFees;
 double hotelCost;
 double mealCosts[][3];
 
+double totalExpenses;
+double totalAllowable;
+double reimburseAmount;
+double savedAmount;
+
 void main(void){
     //Print introduction to program to terminal
+    printIntro();
 
 
     //Prompt for user input to assign values to each variable
+    getUserInputs();
 
 
     //After all variables have values, calculate 
+    totalExpenses = calculateTotalExpenses(numberOfDays, airfare, carRentalCost, milesDriven, parkingFees, taxiFees, registrationFees, hotelCost, mealCosts);
+    totalAllowable = calculateTotalAllowable(numberOfDays, departTime, returnTime, parkingFees, taxiFees);
+    reimburseAmount = calculateReimburseAmount(totalExpenses, totalAllowable);
+    savedAmount = calculateSavedAmount(totalExpenses, totalAllowable);
 
 
     //Output to user
+    outputTotalExpenses();
+    outputTotalALlowable();
+    outputReimburseAmount();
+    outputSavedAmount();
 }
