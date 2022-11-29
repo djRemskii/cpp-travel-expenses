@@ -1,3 +1,5 @@
+#include <stdlib.h> // Used for EXIT_FAILURE
+
 /*
 User input used in functions... :
 
@@ -60,9 +62,11 @@ double calculateTotalExpenses(int numberOfDays, double airfare, double carRental
 * $90 lodging per night
 * breakfast, lunch, dinner ...
 */
-double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTime, double parkingFees[], double taxiFees[])
+double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTime, double parkingFees[], double taxiFees[], double mealFees[][3])
 {
     double totalAllowed = 0;
+
+    /* -------- CALCULATING TRANSPORTATION COSTS -------- */
 
     const double allowableParkingExpense = 6.0;
     const double allowableTaxiExpense = 10.0;
@@ -78,46 +82,60 @@ double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTi
         
         if(taxiFees[i] > 0)
         {
-            parkingCosts += allowableTaxiExpense;
+            taxiCosts += allowableTaxiExpense;
         }
     }
 
-    double hotelCosts = 90 * numberOfDays;
+    /* -------- CALCULATING TRANSPORTATION COSTS -------- */
+
+    const double lodgingAllowance = 90.0;
+    double hotelCosts = lodgingAllowance * numberOfDays;
+
+    /* -------- CALCULATING MEAL COSTS -------- */
+
+    enum Meal {
+        Breakfast, // 0
+        Lunch,     // 1
+        Dinner     // 2
+    };
+
+    const enum Meal breakfast = Breakfast;
+    const enum Meal lunch = Lunch;
+    const enum Meal dinner = Dinner;
 
     const double breakfastCost = 9.0;
     const double lunchCost = 12.0;
     const double dinnerCost = 16.0;
-    const double costOfMealsPerDay = breakfastCost + lunchCost + dinnerCost;
-    double mealCosts = costOfMealsPerDay * (numberOfDays - 2); // excluding first and last day
-
-    // First day meals
-    if(departTime < 7)
+    double mealCosts = 0;
+    
+    for (int day = 0; day < numberOfDays; day++)
     {
-        mealCosts += breakfastCost + lunchCost + dinnerCost;
-    }
-    else if(departTime < 12)
-    {
-        mealCosts += lunchCost + dinnerCost;
-    }
-    else if(departTime < 18)
-    {
-        mealCosts += dinnerCost;
-    } 
-
-    // Last day meals
-    if(departTime > 19) 
-    {
-        mealCosts += breakfastCost + lunchCost + dinnerCost;
-    }
-    else if(departTime > 12)
-    {
-        mealCosts += breakfastCost + lunchCost;
-    }
-    else if(departTime > 8)
-    {
-        mealCosts += breakfastCost;
+        for (int mealType = 0; mealType < 3; day++)
+        {
+            if(mealFees[day][mealType] > 0) // If the person ordered breakfast, lunch, and or dinner that day
+            {
+                if(mealType = breakfast) 
+                {
+                    mealCosts += addMealFee(day, numberOfDays, breakfastCost, departTime, returnTime, 7, 8);
+                }
+                else if (mealType = lunch)
+                {
+                    mealCosts += addMealFee(day, numberOfDays, breakfastCost, departTime, returnTime, 12, 12);
+                }
+                else if (mealType = dinner)
+                {
+                    mealCosts += mealCosts += addMealFee(day, numberOfDays, breakfastCost, departTime, returnTime, 18, 19);
+                }
+                else
+                {
+                    printf("ERROR: mealFee item is not considered breakfast, lunch, or dinner.");
+                    return EXIT_FAILURE;
+                }
+            }
+        }
     }
 
+    /* -------- COMBINING ALL CALCULATIONS -------- */
 
     totalAllowed +=   
         parkingCosts + 
@@ -138,4 +156,33 @@ double calculateReimburseAmount(double total, double allowable)
 double calculateSavedAmount(double total, double allowable)
 {
     return (allowable - total);
+}
+
+// static methods to be used with calculateAllowableExpenses, simplifies down mealCosts if statements
+// returns cost of the meal unless otherwise not allowed
+static double addMealFee(int day, int numberOfDays, double constMealCost, int departTime, int returnTime, int departTimeDeadline, int returnTimeDeadline)
+{
+    if(day == 0) // If First Day
+    {
+        // First day breakfast (Breakfast Allowed only if arriving before 7 AM)
+        // First day lunch (Lunch Allowed only if arriving before 12 PM)
+        // First day dinner (Dinner Allowed only if arriving before 6 PM)
+        if(departTime >= departTimeDeadline)
+        {
+            return 0;
+        }
+
+    }
+    else if(day == numberOfDays-1) // If Last Day
+    {
+        // Last day breakfast (Breakfast allowed only if leaving after 8 AM)
+        // Last day lunch (Lunch allowed only if leaving after 12 PM)
+        // Last day lunch (Lunch allowed only if leaving after 7 PM)
+        if(returnTime <= returnTimeDeadline)
+        {
+            return 0;
+        }
+    }
+
+    return constMealCost;
 }
