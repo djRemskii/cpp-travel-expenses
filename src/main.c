@@ -113,7 +113,6 @@ int main(){
     }
 
 
-    printf("Total Expenses: %.2f\n", airfare);
     //After all variables have values, calculate 
     totalExpenses = calculateTotalExpenses(numberOfDays, airfare, carRentalCost, milesDriven, parkingFees, taxiFees, registrationFees, hotelCost, mealCosts);
     totalAllowable = calculateAllowableExpenses(numberOfDays, departTime, returnTime, parkingFees, taxiFees, mealCosts);   

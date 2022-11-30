@@ -23,6 +23,7 @@ void printIntro(){
 int getUserInputs(){
 
     //int numberOfDays;
+    char baddet; // a dummy var used merely for detecting bad scanf() conversions
     int num;
     printf("How many days did you stay?\n");
     scanf("%d", &num);
@@ -34,12 +35,20 @@ int getUserInputs(){
 
     //int departTime;
     printf("What is the departure time (24 hour time, give hour)?\n");
-    scanf("%d", &departTime);
+    scanf("%d", &num);
+    while (num < 0 || num > 24){
+        printf("Invalid, try again\n");
+        scanf("%d", &num);
+    }
     departTime = num;
 
     //int returnTime;
     printf("What is the return time (24 hour time, give hour)?\n");
     scanf("%d", &num);
+    while (num < 0 || num > 24){
+        printf("Invalid, try again\n");
+        scanf("%d", &num);
+    }
     returnTime = num;
 
     //double airfare;
@@ -53,7 +62,7 @@ int getUserInputs(){
 
     //double carRentalCost;
     printf("What is the car rental cost?\n");
-    scanf("%d", &carRentalCost);
+    scanf("%d", &num);
     while (num < 0){
         printf("Invalid, try again\n");
         scanf("%d", &num);
