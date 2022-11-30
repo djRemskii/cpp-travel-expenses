@@ -1,3 +1,11 @@
+/* 
+ * FILE: expensesMethods.c
+ * AUTHOR: Minh Tran
+ *
+ * primary structure file for program, outlines all the variables and methods
+ * that will be used by the program.
+ */
+
 #include <stdlib.h> // Used for EXIT_FAILURE
 #include <stdio.h>
 #include "../include/main.h"
@@ -66,6 +74,7 @@ double calculateTotalExpenses(int numberOfDays, double airfare, double carRental
 */
 double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTime, double parkingFees[], double taxiFees[], double mealFees[][3])
 {
+    // Explicit call for addMealFee
     double totalAllowed = 0;
 
     /* -------- CALCULATING TRANSPORTATION COSTS -------- */
@@ -116,15 +125,15 @@ double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTi
         {
             if(mealFees[day][mealType] > 0) // If the person ordered breakfast, lunch, and or dinner that day
             {
-                if(mealType = breakfast) 
+                if(mealType == breakfast) 
                 {
                     mealCosts += addMealFee(day, numberOfDays, breakfastCost, departTime, returnTime, 7, 8);
                 }
-                else if (mealType = lunch)
+                else if (mealType == lunch)
                 {
                     mealCosts += addMealFee(day, numberOfDays, lunchCost, departTime, returnTime, 12, 12);
                 }
-                else if (mealType = dinner)
+                else if (mealType == dinner)
                 {
                     mealCosts += addMealFee(day, numberOfDays, dinnerCost, departTime, returnTime, 18, 19);
                 }
@@ -162,7 +171,7 @@ double calculateSavedAmount(double total, double allowable)
 
 // static methods to be used with calculateAllowableExpenses, simplifies down mealCosts if statements
 // returns cost of the meal unless otherwise not allowed
-static double addMealFee(int day, int numberOfDays, double constMealCost, int departTime, int returnTime, int departTimeDeadline, int returnTimeDeadline)
+double addMealFee(int day, int numberOfDays, double constMealCost, int departTime, int returnTime, int departTimeDeadline, int returnTimeDeadline)
 {
     if(day == 0) // If First Day
     {
