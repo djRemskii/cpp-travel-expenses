@@ -32,12 +32,14 @@ extern void outputSavedAmount();
 //Variables to be calculated and output
 extern double totalExpenses;
 extern double totalAllowable;
+extern double totalUsedAllowable;
 extern double reimburseAmount;
 extern double savedAmount;
 
 //Calculation methods
 extern double calculateTotalExpenses();
 extern double calculateAllowableExpenses();
+extern double calculateUsedAllowableExpenses();
 extern double calculateReimburseAmount();
 extern double calculateSavedAmount();
 extern double addMealFee();

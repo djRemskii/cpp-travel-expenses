@@ -17,6 +17,7 @@ double mealCosts[][3];
 
 double totalExpenses;
 double totalAllowable;
+double totalUsedAllowable;
 double reimburseAmount;
 double savedAmount;
 
@@ -115,19 +116,23 @@ int main(){
 
     //After all variables have values, calculate 
     totalExpenses = calculateTotalExpenses(numberOfDays, airfare, carRentalCost, milesDriven, parkingFees, taxiFees, registrationFees, hotelCost, mealCosts);
-    totalAllowable = calculateAllowableExpenses(numberOfDays, departTime, returnTime, parkingFees, taxiFees, mealCosts);   
-    reimburseAmount = calculateReimburseAmount(totalExpenses, totalAllowable);
-    savedAmount = calculateSavedAmount(totalExpenses, reimburseAmount);
+    totalAllowable = calculateAllowableExpenses(numberOfDays, departTime, returnTime, parkingFees, taxiFees, mealCosts); 
+    totalUsedAllowable = calculateUsedAllowableExpenses(numberOfDays, departTime, returnTime, parkingFees, taxiFees, mealCosts, hotelCost); 
+    reimburseAmount = calculateReimburseAmount(totalExpenses, totalUsedAllowable);
+    savedAmount = calculateSavedAmount(totalAllowable, totalUsedAllowable);
     
     //TEST OUTPUT CODE
-    // printf("Total Expenses: %.2f\n", totalExpenses);
-    // printf("Total Allowable: %.2f\n", totalAllowable);
-    // printf("Total Reimbursed: %.2f\n", reimburseAmount);
-    // printf("Total Saved: %.2f\n", savedAmount);
+    /*
+    printf("Total Expenses: %.2f\n", totalExpenses);
+    printf("Total Allowable: %.2f\n", totalAllowable);
+    printf("Total Used Allowable: %.2f\n", totalUsedAllowable);
+    printf("Total Reimbursed: %.2f\n", reimburseAmount);
+    printf("Total Saved: %.2f\n", savedAmount);
+    */
 
     //Output to user
     outputTotalExpenses(totalExpenses);
     outputTotalAllowable(totalAllowable);
-    outputReimburseAmount(totalExpenses, totalAllowable);
-    outputSavedAmount(totalExpenses, totalAllowable);
+    outputReimburseAmount(reimburseAmount);
+    outputSavedAmount(savedAmount);
 }

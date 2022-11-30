@@ -21,15 +21,15 @@ void outputTotalAllowable(double totalAllowed)
  
 
 //excess amount that must be reimbursed by the businessperson, if any
-void outputReimburseAmount(double total, double allowable)
+void outputReimburseAmount(double reimburseAmount)
 {
-    printf("Reimbursed Amount: %.2f\n", calculateReimburseAmount(total, allowable));
+    printf("Amount to be Reimbursed: %.2f\n", reimburseAmount);
 }
  
 //the amount saved by the businessperson if the expenses were under the total amount allowed
-void outputSavedAmount(double total, double allowable)
+void outputSavedAmount(double savedAmount)
 {
-    printf("Amount Saved: %.2f\n", calculateSavedAmount(total, allowable));
+    printf("Amount Saved: %.2f\n", savedAmount);
 }
  
  

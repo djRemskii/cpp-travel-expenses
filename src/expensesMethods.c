@@ -68,6 +68,119 @@ double calculateTotalExpenses(int numberOfDays, double airfare, double carRental
     return totalCost;
 }
 
+
+// double calculateTotalAllowable( ... takes in certain user input relevent to allowable expenses ... ) { returns total amount of the used allowable expenses the company offered }
+/*
+* $6 parking fee / $10 taxi fee ~ per day
+* $90 lodging per night
+* breakfast, lunch, dinner ...
+*/
+double calculateUsedAllowableExpenses(int numberOfDays, int departTime, int returnTime, double (*ptrParkingFees)[], double (*ptrTaxiFees)[], double (*ptrMealFees)[][3], double totalHotelCost)
+{
+    // Explicit call for addMealFee
+    double totalAllowed = 0;
+
+    /* -------- CALCULATING TRANSPORTATION COSTS -------- */
+
+    const double allowableParkingExpense = 6.0;
+    const double allowableTaxiExpense = 10.0;
+    double parkingCosts = 0;
+    double taxiCosts = 0;
+
+    for (int i = 0; i < numberOfDays; i++)
+    {
+        if((*ptrParkingFees)[i] > 0)
+        {
+            double tempParkCost = (*ptrParkingFees)[i];
+            if(tempParkCost > allowableParkingExpense){
+                tempParkCost = allowableParkingExpense;
+            }
+            parkingCosts += tempParkCost;
+        }
+        
+        if((*ptrTaxiFees)[i] > 0)
+        {
+            double tempTaxiCost = (*ptrTaxiFees)[i];
+            if(tempTaxiCost > allowableTaxiExpense){
+                tempTaxiCost = allowableTaxiExpense;
+            }
+            taxiCosts += tempTaxiCost;
+        }
+    }
+
+    /* -------- CALCULATING TRANSPORTATION COSTS -------- */
+
+    const double lodgingAllowance = 90.0;
+    double tempHotelCost = totalHotelCost;
+    if((lodgingAllowance * numberOfDays)<totalHotelCost){
+        tempHotelCost = lodgingAllowance * numberOfDays;
+    }
+    double hotelCosts = tempHotelCost;
+
+    /* -------- CALCULATING MEAL COSTS -------- */
+
+    enum Meal {
+        Breakfast, // 0
+        Lunch,     // 1
+        Dinner     // 2
+    };
+
+    const enum Meal breakfast = Breakfast;
+    const enum Meal lunch = Lunch;
+    const enum Meal dinner = Dinner;
+
+    const double breakfastCost = 9.0;
+    const double lunchCost = 12.0;
+    const double dinnerCost = 16.0;
+    double mealCosts = 0.0;
+    
+    for (int day = 0; day < numberOfDays; day++)
+    {
+        for (int mealType = 0; mealType < 3; mealType++)
+        {
+            if((*ptrMealFees)[day][mealType] > 0) // If the person ordered breakfast, lunch, and or dinner that day
+            {
+                double tempMealCosts = 0.0;
+                if(mealType == breakfast) 
+                {
+                    tempMealCosts = addMealFee(day, numberOfDays, breakfastCost, departTime, returnTime, 7, 8);
+                    if ((*ptrMealFees)[day][mealType] < tempMealCosts){
+                        tempMealCosts = (*ptrMealFees)[day][mealType];
+                    }
+                    mealCosts += tempMealCosts;
+                }
+                else if (mealType == lunch)
+                {
+                    tempMealCosts += addMealFee(day, numberOfDays, lunchCost, departTime, returnTime, 12, 12);
+                }
+                else if (mealType == dinner)
+                {
+                    tempMealCosts += addMealFee(day, numberOfDays, dinnerCost, departTime, returnTime, 18, 19);
+                }
+                else
+                {
+                    printf("ERROR: mealFee item is not considered breakfast, lunch, or dinner.");
+                    return EXIT_FAILURE;
+                }
+
+                if ((*ptrMealFees)[day][mealType] < tempMealCosts){
+                        tempMealCosts = (*ptrMealFees)[day][mealType];
+                }
+                mealCosts += tempMealCosts;
+                
+            }
+        }
+    }
+
+    /* -------- COMBINING ALL CALCULATIONS -------- */
+
+    totalAllowed += parkingCosts + taxiCosts + hotelCosts + mealCosts;
+
+    return totalAllowed;
+}
+
+
+
 // double calculateTotalAllowable( ... takes in certain user input relevent to allowable expenses ... ) { returns total amount of allowable expenses the company must offer }
 /*
 * $6 parking fee / $10 taxi fee ~ per day
@@ -155,16 +268,26 @@ double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTi
     return totalAllowed;
 }
 
+
+
 // double calculateReimburseAmount() ~ returns total - allowable
-double calculateReimburseAmount(double total, double allowable)
+double calculateReimburseAmount(double total, double usedAllowable)
 {
-    return (total - allowable); 
+    if ((total - usedAllowable) > 0){
+        return (total - usedAllowable); 
+    } else {
+        return 0.0;
+    }
 }
 
-// double calculateSavedAmount() ~ returns allowable - total
-double calculateSavedAmount(double total, double reimbursed)
+// double calculateSavedAmount() ~ returns total allowable - allowable spent
+double calculateSavedAmount(double allowable, double usedAllowable)
 {
-    return (total - reimbursed);
+    if ((allowable - usedAllowable) > 0){
+        return (allowable - usedAllowable);
+    } else {
+        return 0.0;
+    }
 }
 
 // static methods to be used with calculateAllowableExpenses, simplifies down mealCosts if statements
