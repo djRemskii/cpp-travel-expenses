@@ -21,59 +21,71 @@ void printIntro(){
 }
 
 int getUserInputs(){
+
     //int numberOfDays;
+    int num;
     printf("How many days did you stay?\n");
-    scanf("%d", &numberOfDays);
-    while (numberOfDays < 1){
+    scanf("%d", &num);
+    while (num < 1){
         printf("Invalid, try again\n");
-        scanf("%d", &numberOfDays);
+        scanf("%d", &num);
     }
+    numberOfDays = num;
 
     //int departTime;
     printf("What is the departure time (24 hour time, give hour)?\n");
     scanf("%d", &departTime);
-    departTime = departTime % 12;
+    departTime = num;
+
     //int returnTime;
     printf("What is the return time (24 hour time, give hour)?\n");
-    scanf("%d", &returnTime);
-    returnTime = returnTime % 12;
+    scanf("%d", &num);
+    returnTime = num;
+
     //double airfare;
     printf("What is the air fare?\n");
-    scanf("%d", &airfare);
-    while (airfare < 0){
+    scanf("%d", &num);
+    while (num < 0){
         printf("Invalid, try again\n");
-        scanf("%d", &airfare);
+        scanf("%d", &num);
     }
+    airfare = num;
+
     //double carRentalCost;
     printf("What is the car rental cost?\n");
     scanf("%d", &carRentalCost);
-    while (carRentalCost < 0){
+    while (num < 0){
         printf("Invalid, try again\n");
-        scanf("%d", &carRentalCost);
+        scanf("%d", &num);
     }
+    carRentalCost = num;
+
     //int milesDriven;
     printf("How many miles driven?\n");
-    scanf("%d", &milesDriven);
-    while (milesDriven < 0){
+    scanf("%d", &num);
+    while (num < 0){
         printf("Invalid, try again\n");
-        scanf("%d", &milesDriven);
+        scanf("%d", &num);
     }
-    
-    
+    milesDriven = num;
+
     //double registrationFees;
     printf("What is the registration Fee?\n");
-    scanf("%d", &registrationFees);
-    while (registrationFees < 0){
+    scanf("%d", &num);
+    while (num < 0){
         printf("Invalid, try again\n");
-        scanf("%d", &registrationFees);
+        scanf("%d", &num);
     }
+    registrationFees = num;
+
     //double hotelCost;
     printf("What is the hotel cost?\n");
-    scanf("%d", &hotelCost);
-    while (hotelCost < 0){
+    scanf("%d", &num);
+    while (num < 0){
         printf("Invalid, try again\n");
-        scanf("%d", &hotelCost);
+        scanf("%d", &num);
     }
+    hotelCost = num;
     
     return 0;
 }

@@ -40,9 +40,11 @@ int main(){
         int num;
         printf("What is the parking fee for day %d\n", i + 1);
         scanf("%d", &num);
+        fflush(stdin);
         while (num < 0){
             printf("Invalid, try again\n");
-            scanf("%d", &num);
+            scanf("%f", &num);
+            fflush(stdin);
         }
         parkingFees[i] = num;
     }
@@ -52,9 +54,11 @@ int main(){
         int num;
         printf("What is the taxi fee for day %d\n", i + 1);
         scanf("%d", &num);
+        fflush(stdin);
         while (num < 0){
             printf("Invalid, try again\n");
             scanf("%d", &num);
+            fflush(stdin);
         }
         taxiFees[i] = num;
     }
@@ -66,9 +70,11 @@ int main(){
             printf("Pick meal cost for %s for day %d\n", arr[j], i + 1);
             int num;
             scanf("%d", &num);
+            fflush(stdin);
             while (num < 0){
                 printf("Invalid, try again\n");
                 scanf("%d", &num);
+                fflush(stdin);
             }
             mealCosts[i][j] = num;
         }
@@ -80,8 +86,8 @@ int main(){
     printf("Number of days: %d\n", numberOfDays);
     printf("Depart time : %d\n", departTime);
     printf("Return time: %d\n", returnTime);
-    printf("Airfare: %d\n", airfare);
-    printf("Car rental cost: %d\n", carRentalCost);
+    printf("Airfare: %.2f\n", airfare);
+    printf("Car rental cost: %.2f\n", carRentalCost);
     printf("Miles driven: %d\n", milesDriven);
 
     printf("Parking Fees:\n");
@@ -94,8 +100,8 @@ int main(){
         printf("\tDay %d: %.2f\n", i+1, taxiFees[i]);
     }
 
-    printf("Registration Fees: %d\n", registrationFees);
-    printf("Hotel Cost: %d\n", hotelCost);
+    printf("Registration Fees: %.2f\n", registrationFees);
+    printf("Hotel Cost: %.2f\n", hotelCost);
     printf("Meal Costs:\n");
     for (int i=0; i<numberOfDays; i++){
         printf("Day %d:\n", i+1);
@@ -108,20 +114,16 @@ int main(){
 
     printf("Total Expenses: %.2f\n", airfare);
     //After all variables have values, calculate 
-    double (*ptr)[numberOfDays] = &parkingFees;
-    double (*ptrTaxiFees)[numberOfDays] = &taxiFees;
-    double (*ptrMealFees)[numberOfDays][3] = &mealCosts;
-
-    totalExpenses = calculateTotalExpenses(numberOfDays, airfare, carRentalCost, milesDriven, parkingFees, ptrTaxiFees, registrationFees, hotelCost, mealCosts);
-    //totalAllowable = calculateAllowableExpenses(numberOfDays, departTime, returnTime, parkingFees, taxiFees);
-    //reimburseAmount = calculateReimburseAmount(totalExpenses, totalAllowable);
-    //savedAmount = calculateSavedAmount(totalExpenses, totalAllowable);
+    totalExpenses = calculateTotalExpenses(numberOfDays, airfare, carRentalCost, milesDriven, parkingFees, taxiFees, registrationFees, hotelCost, mealCosts);
+    totalAllowable = calculateAllowableExpenses(numberOfDays, departTime, returnTime, parkingFees, taxiFees, mealCosts);   
+    reimburseAmount = calculateReimburseAmount(totalExpenses, totalAllowable);
+    savedAmount = calculateSavedAmount(totalExpenses, totalAllowable);
     
     //TEST OUTPUT CODE
     printf("Total Expenses: %.2f\n", totalExpenses);
-    //printf("Total Allowable: %.2f\n", totalAllowable);
-    //printf("Total Reimbursed: %.2f\n", reimburseAmount);
-    //printf("Total Saved: %.2f\n", savedAmount);
+    printf("Total Allowable: %.2f\n", totalAllowable);
+    printf("Total Reimbursed: %.2f\n", reimburseAmount);
+    printf("Total Saved: %.2f\n", savedAmount);
 
     /*
     //Output to user

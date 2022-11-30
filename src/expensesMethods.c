@@ -123,7 +123,7 @@ double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTi
     
     for (int day = 0; day < numberOfDays; day++)
     {
-        for (int mealType = 0; mealType < 3; day++)
+        for (int mealType = 0; mealType < 3; mealType++)
         {
             if((*ptrMealFees)[day][mealType] > 0) // If the person ordered breakfast, lunch, and or dinner that day
             {
