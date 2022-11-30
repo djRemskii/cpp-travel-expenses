@@ -162,9 +162,9 @@ double calculateReimburseAmount(double total, double allowable)
 }
 
 // double calculateSavedAmount() ~ returns allowable - total
-double calculateSavedAmount(double total, double allowable)
+double calculateSavedAmount(double total, double reimbursed)
 {
-    return (allowable - total);
+    return (total - reimbursed);
 }
 
 // static methods to be used with calculateAllowableExpenses, simplifies down mealCosts if statements

@@ -117,7 +117,7 @@ int main(){
     totalExpenses = calculateTotalExpenses(numberOfDays, airfare, carRentalCost, milesDriven, parkingFees, taxiFees, registrationFees, hotelCost, mealCosts);
     totalAllowable = calculateAllowableExpenses(numberOfDays, departTime, returnTime, parkingFees, taxiFees, mealCosts);   
     reimburseAmount = calculateReimburseAmount(totalExpenses, totalAllowable);
-    savedAmount = calculateSavedAmount(totalExpenses, totalAllowable);
+    savedAmount = calculateSavedAmount(totalExpenses, reimburseAmount);
     
     //TEST OUTPUT CODE
     // printf("Total Expenses: %.2f\n", totalExpenses);
