@@ -13,11 +13,15 @@ extern int returnTime;
 extern double airfare;
 extern double carRentalCost;
 extern int milesDriven;
-extern double parkingFees[];
-extern double taxiFees[];
+//extern double parkingFees[];
+//extern double taxiFees[];
 extern double registrationFees;
 extern double hotelCost;
-extern double mealCosts[][3];
+//extern double mealCosts[][3];
+
+//Method to ask for inputs
+extern void printIntro();
+extern int getUserInputs();
 
 //Variables to be calculated and output
 extern double totalExpenses;
