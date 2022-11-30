@@ -23,6 +23,12 @@ extern double hotelCost;
 extern void printIntro();
 extern int getUserInputs();
 
+//Method output
+extern void outputTotalExpenses();
+extern void outputTotalAllowable();
+extern void outputReimburseAmount();
+extern void outputSavedAmount();
+
 //Variables to be calculated and output
 extern double totalExpenses;
 extern double totalAllowable;

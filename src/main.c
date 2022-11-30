@@ -29,6 +29,7 @@ int main(){
         printf("%.2f\n",aaa[i]);
     }
 
+
     //Prompt for user input to assign values to each variable
     getUserInputs();
 
@@ -120,16 +121,14 @@ int main(){
     savedAmount = calculateSavedAmount(totalExpenses, totalAllowable);
     
     //TEST OUTPUT CODE
-    printf("Total Expenses: %.2f\n", totalExpenses);
-    printf("Total Allowable: %.2f\n", totalAllowable);
-    printf("Total Reimbursed: %.2f\n", reimburseAmount);
-    printf("Total Saved: %.2f\n", savedAmount);
+    // printf("Total Expenses: %.2f\n", totalExpenses);
+    // printf("Total Allowable: %.2f\n", totalAllowable);
+    // printf("Total Reimbursed: %.2f\n", reimburseAmount);
+    // printf("Total Saved: %.2f\n", savedAmount);
 
-    /*
     //Output to user
-    outputTotalExpenses();
-    outputTotalAllowable();
-    outputReimburseAmount();
-    outputSavedAmount();
-    */
+    outputTotalExpenses(totalExpenses);
+    outputTotalAllowable(totalAllowable);
+    outputReimburseAmount(totalExpenses, totalAllowable);
+    outputSavedAmount(totalExpenses, totalAllowable);
 }
