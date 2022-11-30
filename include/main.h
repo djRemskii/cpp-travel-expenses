@@ -30,4 +30,4 @@ extern double calculateTotalExpenses();
 extern double calculateTotalAllowable();
 extern double calculateReimburseAmount();
 extern double calculateSavedAmount();
-
+extern double addMealFee();

@@ -2,8 +2,7 @@
  * FILE: expensesMethods.c
  * AUTHOR: Minh Tran
  *
- * primary structure file for program, outlines all the variables and methods
- * that will be used by the program.
+ * methods for calculating total and allowable expenses
  */
 
 #include <stdlib.h> // Used for EXIT_FAILURE
