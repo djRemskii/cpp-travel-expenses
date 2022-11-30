@@ -8,16 +8,29 @@
 #include "../include/main.h"
  
 //total expenses incurred by the businessperson
-printf("Total Expenses: %f", calculateTotalExpenses(numberOfDays, airfare, carRentalCost, milesDriven, parkingFees[], taxiFees[], registrationFees, hotelCost, a_mealCosts[][3]));
- 
+void outputTotalExpenses(double totalExpense)
+{
+    printf("Total Expenses: %.2f\n", totalExpense);
+}
+
 //total allowable expenses for the trip
-printf("Total Allowable Expenses: %f", calculateTotalAllowable(numberOfDays, departTime, returnTime, parkingFees[], taxiFees[], mealFees[][3]));
+void outputTotalAllowable(double totalAllowed)
+{
+    printf("Total Allowable Expenses: %.2f\n", totalAllowed);
+}
  
+
 //excess amount that must be reimbursed by the businessperson, if any
-printf("Reimbursed Amount: %f", calculateReimburseAmount(total, allowable));
+void outputReimburseAmount(double total, double allowable)
+{
+    printf("Reimbursed Amount: %.2f\n", calculateReimburseAmount(total, allowable));
+}
  
 //the amount saved by the businessperson if the expenses were under the total amount allowed
-printf("Amount Saved: %f", calculateSavedAmount(total, allowable));
+void outputSavedAmount(double total, double allowable)
+{
+    printf("Amount Saved: %.2f\n", calculateSavedAmount(total, allowable));
+}
  
  
  
