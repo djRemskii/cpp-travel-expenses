@@ -29,38 +29,41 @@ double mealCosts[numberOfDays][3]              ---               (record each me
 // 4 primary methods
 
 // double calculateTotalExpenses( ... takes in all user input ... ) { returns total amount of expenses for the businessperson }
-double calculateTotalExpenses(int numberOfDays, double airfare, double carRentalCost, int milesDriven, double parkingFees[], double taxiFees[], double registrationFees, double hotelCost, double a_mealCosts[][3])
+double calculateTotalExpenses(int numberOfDays, double airfare, double carRentalCost, int milesDriven, double (*ptrParkingFees)[], double (*ptrTaxiFees)[], double registrationFees, double hotelCost, double (*ptrMealFees)[][3])
 {
-    double totalCost = 0;
+    double totalCost = 0.0;
+
+    //dereference arrays
+    // double parkingFees[] = *ptrParkingFees;
+    // double taxiFees[] = *ptrTaxiFees;
+    // double mealFees[][3] = *ptrMealFees;
 
     const double costPerMile = 0.27; // per mile driven = $0.27
-    double parkingCosts = 0;
-    double taxiCosts = 0;
-    double mealCosts = 0;
-
+    double parkingCosts = 0.0;
+    double taxiCosts = 0.0;
+    double mealCosts = 0.0;
     for (int i = 0; i < numberOfDays; i++)
     {
-        parkingCosts += parkingFees[i];
-        taxiCosts += taxiFees[i];
+        parkingCosts += (*ptrParkingFees)[i];
+        taxiCosts += (*ptrTaxiFees)[i];
     }
 
+
     for (int i = 0; i < numberOfDays; i++)
     {
-        for (int k = 0; k < 3; i++)
+        for (int k = 0; k < 3; k++)
         {
-            mealCosts += a_mealCosts[i][k];
+            mealCosts += (*ptrMealFees)[i][k];
         }
     }
 
-    totalCost += 
-        airfare + 
-        carRentalCost + 
-        ((double) milesDriven * costPerMile) + 
-        parkingCosts + 
-        taxiCosts + 
-        registrationFees + 
-        hotelCost + 
-        mealCosts;
+    totalCost = airfare + carRentalCost + ((double) milesDriven * costPerMile) + parkingCosts + taxiCosts + registrationFees + hotelCost + mealCosts;
+    printf("---------------------\n");
+    printf("The following text can befound in calculateTotalExpenses method within the expensesMethod file.\n");
+    printf("Order of Variables: airfare  carRentalCost  ((double) milesDriven * costPerMile)  parkingCosts  taxiCosts  registrationFees  hotelCost  mealCosts  totalCost\n");
+    printf("%f %f %f %f %f %f %f %f %f\n", airfare, carRentalCost, ((double) milesDriven * costPerMile), parkingCosts, taxiCosts, registrationFees, hotelCost, mealCosts, totalCost);
+    printf("---------------------\n");
+
 
     return totalCost;
 }
@@ -71,7 +74,7 @@ double calculateTotalExpenses(int numberOfDays, double airfare, double carRental
 * $90 lodging per night
 * breakfast, lunch, dinner ...
 */
-double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTime, double parkingFees[], double taxiFees[], double mealFees[][3])
+double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTime, double (*ptrParkingFees)[], double (*ptrTaxiFees)[], double (*ptrMealFees)[][3])
 {
     // Explicit call for addMealFee
     double totalAllowed = 0;
@@ -85,12 +88,12 @@ double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTi
 
     for (int i = 0; i < numberOfDays; i++)
     {
-        if(parkingFees[i] > 0)
+        if((*ptrParkingFees)[i] > 0)
         {
             parkingCosts += allowableParkingExpense;
         }
         
-        if(taxiFees[i] > 0)
+        if((*ptrTaxiFees)[i] > 0)
         {
             taxiCosts += allowableTaxiExpense;
         }
@@ -122,7 +125,7 @@ double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTi
     {
         for (int mealType = 0; mealType < 3; day++)
         {
-            if(mealFees[day][mealType] > 0) // If the person ordered breakfast, lunch, and or dinner that day
+            if((*ptrMealFees)[day][mealType] > 0) // If the person ordered breakfast, lunch, and or dinner that day
             {
                 if(mealType == breakfast) 
                 {
@@ -147,11 +150,7 @@ double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTi
 
     /* -------- COMBINING ALL CALCULATIONS -------- */
 
-    totalAllowed +=   
-        parkingCosts + 
-        taxiCosts + 
-        hotelCosts + 
-        mealCosts;
+    totalAllowed += parkingCosts + taxiCosts + hotelCosts + mealCosts;
 
     return totalAllowed;
 }

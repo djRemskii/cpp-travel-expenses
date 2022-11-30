@@ -108,7 +108,11 @@ int main(){
 
     printf("Total Expenses: %.2f\n", airfare);
     //After all variables have values, calculate 
-    totalExpenses = calculateTotalExpenses(numberOfDays, airfare, carRentalCost, milesDriven, parkingFees, taxiFees, registrationFees, hotelCost, mealCosts);
+    double (*ptr)[numberOfDays] = &parkingFees;
+    double (*ptrTaxiFees)[numberOfDays] = &taxiFees;
+    double (*ptrMealFees)[numberOfDays][3] = &mealCosts;
+
+    totalExpenses = calculateTotalExpenses(numberOfDays, airfare, carRentalCost, milesDriven, parkingFees, ptrTaxiFees, registrationFees, hotelCost, mealCosts);
     //totalAllowable = calculateAllowableExpenses(numberOfDays, departTime, returnTime, parkingFees, taxiFees);
     //reimburseAmount = calculateReimburseAmount(totalExpenses, totalAllowable);
     //savedAmount = calculateSavedAmount(totalExpenses, totalAllowable);
