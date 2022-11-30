@@ -61,7 +61,7 @@ double calculateTotalExpenses(int numberOfDays, double airfare, double carRental
     printf("---------------------\n");
     printf("The following text can befound in calculateTotalExpenses method within the expensesMethod file.\n");
     printf("Order of Variables: airfare  carRentalCost  ((double) milesDriven * costPerMile)  parkingCosts  taxiCosts  registrationFees  hotelCost  mealCosts  totalCost\n");
-    printf("%f %f %f %f %f %f %f %f %f\n", airfare, carRentalCost, ((double) milesDriven * costPerMile), parkingCosts, taxiCosts, registrationFees, hotelCost, mealCosts, totalCost);
+    printf("%.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f\n", airfare, carRentalCost, ((double) milesDriven * costPerMile), parkingCosts, taxiCosts, registrationFees, hotelCost, mealCosts, totalCost);
     printf("---------------------\n");
 
 
