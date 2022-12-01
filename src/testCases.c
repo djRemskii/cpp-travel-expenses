@@ -78,9 +78,9 @@ void calculateTest3() {
     printf("%.2f\n", reimburse);
     printf("%.2f\n", saved);
 
-    assert(totalCost == 765.23);
+    assert(totalCost == 740.23);
     assert(allowed == 353);
-    assert(reimburse == 414.23);
+    assert(reimburse == 389.23);
     assert(saved == 2.00);
 
     printf("Test 3 Successful\n");
@@ -124,13 +124,3 @@ void calculateTest5() {
 
     printf("Test 5 Successful\n");
 }
-
-
-
-/*
-    double calculateTotalExpenses(int numberOfDays, double airfare, double carRentalCost, int milesDriven, double parkingFees[], 
-                                    double taxiFees[], double registrationFees, double hotelCost, double a_mealCosts[][0, 1, 2])
-    double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTime, double parkingFees[], double taxiFees[], double mealFees[][0, 1, 2])
-    double calculateReimburseAmount(double total, double allowable)
-    double calculateSavedAmount(double total, double allowable)erg ergerg ergb iklb werafgwerageragwerageragyuilbwerafguilb r
-*/

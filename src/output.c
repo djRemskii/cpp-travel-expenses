@@ -31,24 +31,3 @@ void outputSavedAmount(double savedAmount)
 {
     printf("Amount Saved: %.2f\n", savedAmount);
 }
- 
- 
- 
- 
- 
- 
-/** Output to user
-    outputTotalExpenses();
-    outputTotalALlowable();
-    outputReimburseAmount();
-    outputSavedAmount();
- 
- 
-double totalExpenses
-double totalAllowable
-double reimburseAmount
-double savedAmount
-*/
- 
- 
-
