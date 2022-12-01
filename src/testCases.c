@@ -73,10 +73,16 @@ void calculateTest3() {
     double reimburse = calculateReimburseAmount(totalCost, used);
     double saved = calculateSavedAmount(allowed, used);
 
-    assert(totalCost == 765.23);
-    assert(allowed == 507);
-    assert(reimburse == 412.23);
-    assert(saved == -412.23);
+    printf("%.2f\n", totalCost);
+    printf("%.2f\n", allowed);
+    printf("%.2f\n", used);
+    printf("%.2f\n", reimburse);
+    printf("%.2f\n", saved);
+
+    assert(totalCost == 740.23);
+    assert(allowed == 353);
+    assert(reimburse == 389.23);
+    assert(saved == 2.00);
 }
 
 void calculateTest4() { 
@@ -90,16 +96,12 @@ void calculateTest4() {
     double reimburse = calculateReimburseAmount(totalCost, used);
     double saved = calculateSavedAmount(allowed, used);
 
-    printf("%.2f\n", totalCost);
-    printf("%.2f\n", allowed);
-    printf("%.2f\n", used);
-    printf("%.2f\n", reimburse);
-    printf("%.2f\n", saved);
-
     assert(totalCost == 932.99);
     assert(allowed == 631);
     assert(reimburse == 301.99);
     assert(saved == 0);
+
+    printf("Test 4 Successful");
 }
 
 
@@ -114,12 +116,12 @@ void calculateTest5() {
     double reimburse = calculateReimburseAmount(totalCost, used);
     double saved = calculateSavedAmount(allowed, used);
 
-    printf("%.2f", reimburse);
-
     assert(totalCost == 1319.76);
     assert(allowed == 781.00);
     assert(reimburse == 538.76);
     assert(saved == 0);
+
+    printf("Test 5 Successful");
 }
 
 
