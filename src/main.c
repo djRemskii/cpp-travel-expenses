@@ -27,11 +27,6 @@ int main(){
     //Print introduction to program to terminal
     printIntro();
 
-    double aaa[3] = {1.0,2.0,3.0};
-    for (int i=0; i<3; i++){
-        printf("%.2f\n",aaa[i]);
-    }
-
 
     //Prompt for user input to assign values to each variable
     getUserInputs();

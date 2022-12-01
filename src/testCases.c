@@ -8,14 +8,6 @@
 #include <stdio.h>
 #include <assert.h>
 
-/*
-void TestCase1();
-void TestCase2();
-void TestCase3();
-void TestCase4();
-void TestCase5();
-*/
-
 
 void calculateTest1() { 
 
