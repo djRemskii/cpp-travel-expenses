@@ -35,10 +35,6 @@ program:
 
 	$(CC) -o bin/program$(EXT) $(MAIN) $(INPUT) $(OUTPUT) $(METHODS) $(TEST)
 
-noTest:
-
-	$(CC) -o bin/program$(EXT) $(MAIN) $(INPUT) $(OUTPUT) $(METHODS)
-
 objects: main.o input.o output.o expensesMethods.o testCases.o
 
 main.o: $(MAIN)
