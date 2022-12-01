@@ -142,5 +142,6 @@ int main(){
 
 
     //Test Cases code
+    calculateTest4();
     calculateTest5();
 }
