@@ -16,6 +16,7 @@ void TestCase4();
 void TestCase5();
 */
 
+/*
 void calculateTest1() { 
 
     numberOfDays = 4;
@@ -76,6 +77,7 @@ void calculateTest4() {
     Assert.IsEqual(calculateReimburseAmount(932.74, 631), 301.74);
     Assert.IsEqual(calculateSavedAmount(932.74, 631), -301.74);
 }
+*/
 
 void calculateTest5() { 
     double parkingFee[] = {7, 0, 10, 0, 7, 7};
@@ -84,8 +86,9 @@ void calculateTest5() {
 
     double totalCost = calculateTotalExpenses(6, 82.59, 46.67, 56, parkingFee, taxiFee, 75.0, 792.84, foodFee); 
     double allowed = calculateAllowableExpenses(6, 11, 14, parkingFee, taxiFee, foodFee);
-    double reimburse = calculateReimburseAmount(totalCost, allowed);
-    double saved = calculateSavedAmount(totalCost, allowed);
+    double used = calculateUsedAllowableExpenses(6, 11, 14, parkingFee, taxiFee, foodFee, 792.84);
+    double reimburse = calculateReimburseAmount(totalCost, used);
+    double saved = calculateSavedAmount(allowed, used);
 
     printf("%.2f", reimburse);
 
