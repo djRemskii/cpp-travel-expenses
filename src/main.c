@@ -82,13 +82,16 @@ int main(){
     //getMultidayInputs();
 
     //Code to make sure variables are being saved to.
+    /*
     printf("Number of days: %d\n", numberOfDays);
     printf("Depart time : %d\n", departTime);
     printf("Return time: %d\n", returnTime);
     printf("Airfare: %.2f\n", airfare);
     printf("Car rental cost: %.2f\n", carRentalCost);
     printf("Miles driven: %d\n", milesDriven);
+    */
 
+    /*
     printf("Parking Fees:\n");
     for (int i=0; i<numberOfDays; i++){
         printf("\tDay %d: %.2f\n", i+1, parkingFees[i]);
@@ -109,6 +112,9 @@ int main(){
         }
         printf("\n");
     }
+    */
+
+    printf("\n");
 
 
     //After all variables have values, calculate 
@@ -133,9 +139,13 @@ int main(){
     outputReimburseAmount(reimburseAmount);
     outputSavedAmount(savedAmount);
 
+    printf("\n");
+    printf("~~~~~~~~~~~Testing Below~~~~~~~~~~~\n");
+    printf("\n");
+
 
     //Test Cases code
-    //calculateTest1();
+    calculateTest1();
     calculateTest2();
     calculateTest3();
     calculateTest4();
