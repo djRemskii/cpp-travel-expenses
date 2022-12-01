@@ -80,12 +80,19 @@ void calculateTest4() {
 void calculateTest5() { 
     double parkingFee[] = {7, 0, 10, 0, 7, 7};
     double taxiFee[] = {0, 26.37, 0, 14.22, 0, 0};
-    double foodFee[6][3] = {0, 13.60, 19.37} {11.50, 13.60, 19.37} {11.50, 13.60, 19.37} {11.50, 13.60, 19.37} {11.50, 13.60, 19.37} {11.50, 13.60, 0};
+    double foodFee[6][3] = {{0, 13.60, 19.37}, {11.50, 13.60, 19.37}, {11.50, 13.60, 19.37}, {11.50, 13.60, 19.37}, {11.50, 13.60, 19.37}, {11.50, 13.60, 0}};
 
-    Assert.IsEqual(calculateTotalExpenses(6, 82.59, 46.67, 56, parkingFee, taxiFee, 75, 792.84, foodFee), 1319.76);
-    Assert.IsEqual(calculateAllowableExpenses(6, 11, 14, parkingFee, taxiFee, foodFee), 776);
-    Assert.IsEqual(calculateReimburseAmount(1319.76, 776), 543.76);
-    Assert.IsEqual(calculateSavedAmount(1319.76, 776), -543.76);
+    double totalCost = calculateTotalExpenses(6, 82.59, 46.67, 56, parkingFee, taxiFee, 75.0, 792.84, foodFee); 
+    double allowed = calculateAllowableExpenses(6, 11, 14, parkingFee, taxiFee, foodFee);
+    double reimburse = calculateReimburseAmount(totalCost, allowed);
+    double saved = calculateSavedAmount(totalCost, allowed);
+
+    printf("%.2f", reimburse);
+
+    assert(totalCost == 1319.76);
+    assert(allowed == 781.00);
+    assert(reimburse == 538.76);
+    assert(saved == 0);
 }
 
 

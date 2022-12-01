@@ -22,6 +22,10 @@ double reimburseAmount;
 double savedAmount;
 
 int main(){
+
+    // Tests
+    calculateTest5();
+
     //Print introduction to program to terminal
     printIntro();
 
