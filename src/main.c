@@ -23,8 +23,6 @@ double savedAmount;
 
 int main(){
 
-    // Tests
-    calculateTest5();
 
     //Print introduction to program to terminal
     printIntro();
@@ -142,6 +140,8 @@ int main(){
 
 
     //Test Cases code
+    //calculateTest1();
+    calculateTest2();
     calculateTest3();
     calculateTest4();
     calculateTest5();

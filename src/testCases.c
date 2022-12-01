@@ -27,13 +27,21 @@ void calculateTest1() {
     double totalCost = calculateTotalExpenses(4, 90.50, 30.75, 150, parkingFee, taxiFee, 50.99, 610, foodFee);
     double allowed = calculateAllowableExpenses(4, 10, 17, parkingFee, taxiFee, foodFee);
     double used = calculateUsedAllowableExpenses(4, 10, 17, parkingFee, taxiFee, foodFee, 610);
-    double reimburse = calculateReimburseAmount(1004.74, 507);
-    double saved = calculateSavedAmount(1004.74, 507);
+    double reimburse = calculateReimburseAmount(totalCost, used);
+    double saved = calculateSavedAmount(allowed, used);
+
+    printf("%.2f\n", totalCost);
+    printf("%.2f\n", allowed);
+    printf("%.2f\n", used);
+    printf("%.2f\n", reimburse);
+    printf("%.2f\n", saved);
 
     assert(totalCost == 1004.74);
     assert(allowed == 507);
     assert(reimburse == 497.74);
     assert(saved == -497.74);
+
+    printf("Test 1 Successful\n");
 }
 
 void calculateTest2() { 
@@ -44,13 +52,21 @@ void calculateTest2() {
     double totalCost = calculateTotalExpenses(2, 45.99, 75.50, 50, parkingFee, taxiFee, 65.89, 995.14, foodFee);
     double allowed = calculateAllowableExpenses(2, 6, 12, parkingFee, taxiFee, foodFee);
     double used = calculateUsedAllowableExpenses(2, 6, 12, parkingFee, taxiFee, foodFee, 995.14);
-    double reimburse = calculateReimburseAmount(1,287.02, 250);
-    double saved = calculateSavedAmount(1004.74, 507);
+    double reimburse = calculateReimburseAmount(totalCost, used);
+    double saved = calculateSavedAmount(allowed, used);
+
+    printf("%.2f\n", totalCost);
+    printf("%.2f\n", allowed);
+    printf("%.2f\n", used);
+    printf("%.2f\n", reimburse);
+    printf("%.2f\n", saved);
 
     assert(totalCost == 1287.02);
     assert(allowed = 250);
-    assert(reimburse == 1037.02);
-    assert(saved == -1037.02);
+    assert(reimburse == 1050.02);
+    assert(saved == 1.00);
+
+    printf("Test 2 Successful\n");
 }
 
 void calculateTest3() { 
@@ -61,8 +77,8 @@ void calculateTest3() {
     double totalCost = calculateTotalExpenses(3, 104.09, 0, 0, parkingFee, taxiFee, 25, 478.34, foodFee);
     double allowed = calculateAllowableExpenses(3, 13, 5, parkingFee, taxiFee, foodFee);
     double used = calculateUsedAllowableExpenses(3, 13, 5, parkingFee, taxiFee, foodFee, 478.34);
-    double reimburse = calculateReimburseAmount(765.23, 353);
-    double saved = calculateSavedAmount(765.23, 353);
+    double reimburse = calculateReimburseAmount(totalCost, used);
+    double saved = calculateSavedAmount(allowed, used);
 
     printf("%.2f\n", totalCost);
     printf("%.2f\n", allowed);
@@ -70,10 +86,12 @@ void calculateTest3() {
     printf("%.2f\n", reimburse);
     printf("%.2f\n", saved);
 
-    assert(totalCost == 740.23);
+    assert(totalCost == 765.23);
     assert(allowed == 353);
-    assert(reimburse == 389.23);
+    assert(reimburse == 414.23);
     assert(saved == 2.00);
+
+    printf("Test 3 Successful\n");
 }
 
 void calculateTest4() { 
@@ -92,7 +110,7 @@ void calculateTest4() {
     assert(reimburse == 301.99);
     assert(saved == 0);
 
-    printf("Test 4 Successful");
+    printf("Test 4 Successful\n");
 }
 
 
@@ -112,7 +130,7 @@ void calculateTest5() {
     assert(reimburse == 538.76);
     assert(saved == 0);
 
-    printf("Test 5 Successful");
+    printf("Test 5 Successful\n");
 }
 
 
