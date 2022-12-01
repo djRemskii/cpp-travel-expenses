@@ -19,15 +19,6 @@ void TestCase5();
 
 void calculateTest1() { 
 
-    numberOfDays = 4;
-    departTime = 10;
-    returnTime =  17;
-    airfare = 90.50;
-    carRentalCost = 30.75;
-    milesDriven = 150;
-    registrationFees = 50.99;
-    hotelCost = 610;
-
     double parkingFee[] = {8, 8, 8, 8};
     double taxiFee[] = {0, 0, 0, 0};
     double foodFee[4][3] = {{0, 15, 15}, {15, 15, 15}, {15, 15, 15}, {15, 15, 0}};
@@ -35,12 +26,13 @@ void calculateTest1() {
 
     double totalCost = calculateTotalExpenses(4, 90.50, 30.75, 150, parkingFee, taxiFee, 50.99, 610, foodFee);
     double allowed = calculateAllowableExpenses(4, 10, 17, parkingFee, taxiFee, foodFee);
-    double used = calculateReimburseAmount(1004.74, 507);
+    double used = calculateUsedAllowableExpenses(4, 10, 17, parkingFee, taxiFee, foodFee, 610);
+    double reimburse = calculateReimburseAmount(1004.74, 507);
     double saved = calculateSavedAmount(1004.74, 507);
 
     assert(totalCost == 1004.74);
     assert(allowed == 507);
-    assert(used == 497.74);
+    assert(reimburse == 497.74);
     assert(saved == -497.74);
 }
 
@@ -51,12 +43,13 @@ void calculateTest2() {
 
     double totalCost = calculateTotalExpenses(2, 45.99, 75.50, 50, parkingFee, taxiFee, 65.89, 995.14, foodFee);
     double allowed = calculateAllowableExpenses(2, 6, 12, parkingFee, taxiFee, foodFee);
-    double used = calculateReimburseAmount(1,287.02, 250);
+    double used = calculateUsedAllowableExpenses(2, 6, 12, parkingFee, taxiFee, foodFee, 995.14);
+    double reimburse = calculateReimburseAmount(1,287.02, 250);
     double saved = calculateSavedAmount(1004.74, 507);
 
     assert(totalCost == 1287.02);
     assert(allowed = 250);
-    assert(used == 1037.02);
+    assert(reimburse == 1037.02);
     assert(saved == -1037.02);
 }
 
@@ -67,7 +60,8 @@ void calculateTest3() {
 
     double totalCost = calculateTotalExpenses(3, 104.09, 0, 0, parkingFee, taxiFee, 25, 478.34, foodFee);
     double allowed = calculateAllowableExpenses(3, 13, 5, parkingFee, taxiFee, foodFee);
-    double used = calculateReimburseAmount(765.23, 353);
+    double used = calculateUsedAllowableExpenses(3, 13, 5, parkingFee, taxiFee, foodFee, 478.34);
+    double reimburse = calculateReimburseAmount(765.23, 353);
     double saved = calculateSavedAmount(765.23, 353);
 
     printf("%.2f\n", totalCost);
