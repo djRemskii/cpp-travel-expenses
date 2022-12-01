@@ -144,14 +144,10 @@ double calculateUsedAllowableExpenses(int numberOfDays, int departTime, int retu
                 if(mealType == breakfast) 
                 {
                     tempMealCosts = addMealFee(day, numberOfDays, breakfastCost, departTime, returnTime, 7, 8);
-                    if ((*ptrMealFees)[day][mealType] < tempMealCosts){
-                        tempMealCosts = (*ptrMealFees)[day][mealType];
-                    }
-                    mealCosts += tempMealCosts;
                 }
                 else if (mealType == lunch)
                 {
-                    tempMealCosts += addMealFee(day, numberOfDays, lunchCost, departTime, returnTime, 12, 12);
+                    tempMealCosts += addMealFee(day, numberOfDays, lunchCost, departTime, returnTime, 12, 13);
                 }
                 else if (mealType == dinner)
                 {
@@ -246,7 +242,7 @@ double calculateAllowableExpenses(int numberOfDays, int departTime, int returnTi
                 }
                 else if (mealType == lunch)
                 {
-                    mealCosts += addMealFee(day, numberOfDays, lunchCost, departTime, returnTime, 12, 12);
+                    mealCosts += addMealFee(day, numberOfDays, lunchCost, departTime, returnTime, 12, 13);
                 }
                 else if (mealType == dinner)
                 {
@@ -296,9 +292,9 @@ double addMealFee(int day, int numberOfDays, double constMealCost, int departTim
 {
     if(day == 0) // If First Day
     {
-        // First day breakfast (Breakfast Allowed only if arriving before 7 AM)
-        // First day lunch (Lunch Allowed only if arriving before 12 PM)
-        // First day dinner (Dinner Allowed only if arriving before 6 PM)
+        // First day breakfast (Breakfast Allowed only if leaving before 7 AM)
+        // First day lunch (Lunch Allowed only if leaving before 12 PM)
+        // First day dinner (Dinner Allowed only if leaving before 6 PM)
         if(departTime >= departTimeDeadline)
         {
             return 0.0;
@@ -307,9 +303,9 @@ double addMealFee(int day, int numberOfDays, double constMealCost, int departTim
     }
     else if(day == numberOfDays-1) // If Last Day
     {
-        // Last day breakfast (Breakfast allowed only if leaving after 8 AM)
-        // Last day lunch (Lunch allowed only if leaving after 12 PM)
-        // Last day lunch (Lunch allowed only if leaving after 7 PM)
+        // Last day breakfast (Breakfast allowed only if arriving after 8 AM)
+        // Last day lunch (Lunch allowed only if arriving after 1 PM)
+        // Last day lunch (Lunch allowed only if arriving after 7 PM)
         if(returnTime <= returnTimeDeadline)
         {
             return 0.0;

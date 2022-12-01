@@ -4,6 +4,7 @@ INPUT = src/input.c
 OUTPUT = src/output.c
 METHODS = src/expensesMethods.c
 
+
 all: program
 
 program: src

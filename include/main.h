@@ -43,3 +43,10 @@ extern double calculateUsedAllowableExpenses();
 extern double calculateReimburseAmount();
 extern double calculateSavedAmount();
 extern double addMealFee();
+
+//Test Cases methods
+extern void calculateTest1();
+extern void calculateTest2();
+extern void calculateTest3();
+extern void calculateTest4();
+extern void calculateTest5();
