@@ -49,7 +49,7 @@ int main(){
         fflush(stdin);
         while (num < 0){
             printf("Invalid, try again\n");
-            scanf("%f", &num);
+            scanf("%d", &num);
             fflush(stdin);
         }
         parkingFees[i] = num;
@@ -57,13 +57,13 @@ int main(){
 
     //double taxiFees[numberOfDays];
     for (int i = 0; i < numberOfDays; i++){
-        int num;
+        double num;
         printf("What is the taxi fee for day %d\n", i + 1);
-        scanf("%d", &num);
+        scanf("%lf", &num);
         fflush(stdin);
         while (num < 0){
             printf("Invalid, try again\n");
-            scanf("%d", &num);
+            scanf("%lf", &num);
             fflush(stdin);
         }
         taxiFees[i] = num;
@@ -74,12 +74,12 @@ int main(){
         char arr[3][10] = {"Breakfast", "Lunch", "Dinner"};
         for (int j = 0; j < 3; j++){
             printf("Pick meal cost for %s for day %d\n", arr[j], i + 1);
-            int num;
-            scanf("%d", &num);
+            double num;
+            scanf("%lf", &num);
             fflush(stdin);
             while (num < 0){
                 printf("Invalid, try again\n");
-                scanf("%d", &num);
+                scanf("%lf", &num);
                 fflush(stdin);
             }
             mealCosts[i][j] = num;

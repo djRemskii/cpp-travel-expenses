@@ -25,6 +25,7 @@ int getUserInputs(){
     //int numberOfDays;
     char baddet; // a dummy var used merely for detecting bad scanf() conversions
     int num;
+    double dec;
     printf("How many days did you stay?\n");
     scanf("%d", &num);
     while (num < 1){
@@ -45,56 +46,69 @@ int getUserInputs(){
     //int returnTime;
     printf("What is the return time (24 hour time, give hour)?\n");
     scanf("%d", &num);
+    fflush(stdin);
     while (num < 0 || num > 24){
         printf("Invalid, try again\n");
         scanf("%d", &num);
+        fflush(stdin);
     }
     returnTime = num;
 
     //double airfare;
     printf("What is the air fare?\n");
-    scanf("%d", &num);
-    while (num < 0){
+    scanf("%lf", &dec);
+    fflush(stdin);
+    while (dec < 0){
         printf("Invalid, try again\n");
-        scanf("%d", &num);
+        scanf("%lf", &dec);
+        fflush(stdin);
     }
-    airfare = num;
+    airfare = dec;
+    // printf("airfaire: %lf\n", airfare);
 
     //double carRentalCost;
     printf("What is the car rental cost?\n");
-    scanf("%d", &num);
-    while (num < 0){
+    scanf("%lf", &dec);
+    fflush(stdin);
+    while (dec < 0){
         printf("Invalid, try again\n");
-        scanf("%d", &num);
+        scanf("%lf", &dec);
+        fflush(stdin);
     }
-    carRentalCost = num;
+    carRentalCost = dec;
 
     //int milesDriven;
     printf("How many miles driven?\n");
     scanf("%d", &num);
+    fflush(stdin);
     while (num < 0){
         printf("Invalid, try again\n");
         scanf("%d", &num);
+        fflush(stdin);
     }
     milesDriven = num;
 
     //double registrationFees;
     printf("What is the registration Fee?\n");
-    scanf("%d", &num);
-    while (num < 0){
+    scanf("%lf", &dec);
+    fflush(stdin);
+    while (dec < 0){
         printf("Invalid, try again\n");
-        scanf("%d", &num);
+        scanf("%lf", &dec);
+        fflush(stdin);
     }
-    registrationFees = num;
+    registrationFees = dec;
 
     //double hotelCost;
     printf("What is the hotel cost?\n");
-    scanf("%d", &num);
-    while (num < 0){
+    scanf("%lf", &dec);
+    fflush(stdin);
+    while (dec < 0){
         printf("Invalid, try again\n");
-        scanf("%d", &num);
+        scanf("%lf", &dec);
+        fflush(stdin);
     }
-    hotelCost = num;
+    hotelCost = dec;
     
     return 0;
 }

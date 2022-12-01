@@ -16,7 +16,7 @@ void TestCase4();
 void TestCase5();
 */
 
-/*
+
 void calculateTest1() { 
 
     numberOfDays = 4;
@@ -30,20 +30,19 @@ void calculateTest1() {
 
     double parkingFee[] = {8, 8, 8, 8};
     double taxiFee[] = {0, 0, 0, 0};
-    double foodFee[4][3] = {0, 15, 15}, {15, 15, 15}, {15, 15, 15} {15, 15, 0};
+    double foodFee[4][3] = {{0, 15, 15}, {15, 15, 15}, {15, 15, 15}, {15, 15, 0}};
 
-    double totalExpenses = calculateTotalExpenses(numberOfDays, airfare, carRentalCost, milesDriven, parkingFees, taxiFees, registrationFees, hotelCost, mealCosts);
-    double totalAllowable = calculateAllowableExpenses(numberOfDays, departTime, returnTime, parkingFees, taxiFees, mealCosts); 
-    double totalUsedAllowable = calculateUsedAllowableExpenses(numberOfDays, departTime, returnTime, parkingFees, taxiFees, mealCosts, hotelCost); 
-    double reimburseAmount = calculateReimburseAmount(totalExpenses, totalUsedAllowable);
-    double savedAmount = calculateSavedAmount(totalAllowable, totalUsedAllowable);
 
-    Assert.IsEqual(calculateTotalExpenses(4, 90.50, 30.75, 150, parkingFee, taxiFee, 50.99, 610, foodFee), 1004.74);
-    Assert.IsEqual(calculateAllowableExpenses(4, 10, 17, parkingFee, taxiFee, foodFee), 507);
-    Assert.IsEqual(calculateUsedAllowableExpenses(4, 10, 17, parkingFee, taxiFee, foodFee, 90.50), [EXPECTED HERE])
-    Assert.IsEqual(calculateReimburseAmount(1004.74, 507), 497.74);
-    Assert.IsEqual(calculateSavedAmount(507, UAE HERE), -497.74);
-}*/
+    double totalCost = calculateTotalExpenses(4, 90.50, 30.75, 150, parkingFee, taxiFee, 50.99, 610, foodFee);
+    double allowed = calculateAllowableExpenses(4, 10, 17, parkingFee, taxiFee, foodFee);
+    double used = calculateReimburseAmount(1004.74, 507);
+    double saved = calculateSavedAmount(1004.74, 507);
+
+    assert(totalCost == 1004.74);
+    assert(allowed == 507);
+    assert(used == 497.74);
+    assert(saved == -497.74);
+}
 
 void calculateTest2() { 
     double parkingFee[] = {8, 8};
@@ -52,13 +51,12 @@ void calculateTest2() {
 
     double totalCost = calculateTotalExpenses(2, 45.99, 75.50, 50, parkingFee, taxiFee, 65.89, 995.14, foodFee);
     double allowed = calculateAllowableExpenses(2, 6, 12, parkingFee, taxiFee, foodFee);
-    double used = calculateUsedAllowableExpenses(2, 6, 12, parkingFee, taxiFee, foodFee, 995.14);
-    double reimburse = calculateReimburseAmount(totalCost, used);
-    double saved = calculateSavedAmount(allowed, used);
+    double used = calculateReimburseAmount(1,287.02, 250);
+    double saved = calculateSavedAmount(1004.74, 507);
 
     assert(totalCost == 1287.02);
     assert(allowed = 250);
-    assert(reimburse == 1037.02);
+    assert(used == 1037.02);
     assert(saved == -1037.02);
 }
 
@@ -69,9 +67,8 @@ void calculateTest3() {
 
     double totalCost = calculateTotalExpenses(3, 104.09, 0, 0, parkingFee, taxiFee, 25, 478.34, foodFee);
     double allowed = calculateAllowableExpenses(3, 13, 5, parkingFee, taxiFee, foodFee);
-    double used = calculateUsedAllowableExpenses(3, 13, 5, parkingFee, taxiFee, foodFee, 478.34);
-    double reimburse = calculateReimburseAmount(totalCost, used);
-    double saved = calculateSavedAmount(allowed, used);
+    double used = calculateReimburseAmount(765.23, 353);
+    double saved = calculateSavedAmount(765.23, 353);
 
     printf("%.2f\n", totalCost);
     printf("%.2f\n", allowed);
